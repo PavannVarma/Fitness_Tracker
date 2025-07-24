@@ -135,7 +135,7 @@ const Navbar = () => {
             Fittrack
          </NavLogo>
 
-         <MobileMenu isOpen={isOpen}>
+         <MobileMenu $isOpen={isOpen}>
             <Navlink to="/">Dashboard</Navlink>
             <Navlink to="/workouts">Workouts</Navlink>
             <Navlink to="/tutorials">Tutorials</Navlink>
