@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BarChart } from "@mui/x-charts/BarChart";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 const Card = styled.div`
   flex: 1;
@@ -25,21 +25,21 @@ const Title = styled.div`
   }
 `;
 
-const WeeklyStatCard = ({ data }) => {
+const CategoryChart = ({ data }) => {
   return (
     <Card>
       <Title>Weekly Calories Burned</Title>
-      {data?.totalWeeksCaloriesBurnt && (
-        <BarChart
-          xAxis={[
-            { scaleType: "band", data: data?.totalWeeksCaloriesBurnt?.weeks },
-          ]}
-          yAxis={[
+      {data?.pieChartData && (
+        <PieChart
+          series={[
             {
-                valueFormatter: (value) => value.toString(), 
+              data: data?.pieChartData,
+              innerRadius: 30,
+              outerRadius: 120,
+              paddingAngle: 5,
+              cornerRadius: 5,
             },
           ]}
-          series={[{ data: data?.totalWeeksCaloriesBurnt?.caloriesBurned }]}
           height={300}
         />
       )}
@@ -47,4 +47,4 @@ const WeeklyStatCard = ({ data }) => {
   );
 };
 
-export default WeeklyStatCard;
+export default CategoryChart;
