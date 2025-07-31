@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import TextInput from "./TextInput";
 import Button from "./Button";
@@ -26,12 +26,11 @@ const Title = styled.div`
   }
 `;
 
-const AddWorkout = () => {
-  const [workout, setWorkout] = useState("");
+const AddWorkout = ({ workout, setWorkout, addNewWorkout, buttonLoading }) => {
   return (
     <Card>
       <Title>Add New Workout</Title>
-      <TextInput 
+      <TextInput
         label="Workout"
         textArea
         rows={10}
@@ -44,11 +43,15 @@ const AddWorkout = () => {
 -Weight
 -Duration`}
         value={workout}
-        handel
-        Change={(e) => setWorkout(e.target.value)}
+        handelChange={(e) => setWorkout(e.target.value)}
       />
-      <Button text="Add Workout"
-        small />
+      <Button
+        text="Add Workout"
+        small
+        onClick={() => addNewWorkout()}
+        isLoading={buttonLoading}
+        isDisabled={buttonLoading}
+      />
     </Card>
   );
 };
